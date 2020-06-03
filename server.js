@@ -11,7 +11,7 @@ app.get('/', function(req, res,next) {
     res.sendFile(__dirname + '/index.html')
 })
 
-server.listen(3000, () => console.log(`Listening on ${PORT}`))
+server.listen(PORT, () => console.log(`Listening on ${PORT}`))
 /**/
 
 //might not work
