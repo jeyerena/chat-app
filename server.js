@@ -1,23 +1,7 @@
-// const express = require('express');
-// // Create the app
-// const app = express();
-
-// // Set up the server
-// const server = app.listen(5500, listen);
-
-// // This call back just tells us that the server has started
-// function listen() {
-//   var host = server.address().address;
-//   var port = server.address().port;
-//   console.log('Example app listening at http://' + host + ':' + port);
-// }
-
-// app.use(express.static(__dirname));
-
-// const  io = require('socket.io').listen(server);
-// note:  I replaced const io = ...... line with the one above
-
+/*
+Works */
 var express = require('express');
+var PORT = process.env.PORT || 3000
 var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
@@ -27,9 +11,22 @@ app.get('/', function(req, res,next) {
     res.sendFile(__dirname + '/index.html')
 })
 
-server.listen(3000)
+server.listen(3000, () => console.log(`Listening on ${PORT}`))
+/**/
+
+//might not work
+// const express = require('express')
+// const PORT = process.env.PORT || 3000
+// const INDEX = '/index.html'
+
+// const server = express()
+//     .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
+//     .listen(PORT, () => console.log(`Listening on ${PORT}`));
+// server.use(express.static(__dirname));
+// const io = require('socket.io')(server)
 
 const users = {}
+
 
 io.on('connection', socket => {
     console.log('New user.')
