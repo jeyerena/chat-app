@@ -34,4 +34,9 @@ function appendMessage(message, message_type) {
     messageElement.innerText = message
     messageElement.setAttribute('class', 'message ' + message_type)
     messageContainer.append(messageElement)
+    updateScroll()
+}
+
+function updateScroll(){
+    messageContainer.scrollTop = messageContainer.scrollHeight;
 }
